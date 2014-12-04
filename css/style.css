@@ -1,0 +1,28 @@
+body
+{
+    background-color: black;
+}
+
+
+article.main
+{
+    clear:both;
+    margin: 0 auto;
+    padding: 10px;
+    width:1200px;
+    min-height: 500px;
+    border-radius: 20px;
+    background-color: azure;
+    padding: 10px;
+}
+section#game
+{
+    position:relative;
+    margin: 0 auto;
+    width:800px;
+    height:600px;
+}
+section#imgresource
+{
+    display: none;
+}
