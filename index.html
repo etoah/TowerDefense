@@ -10,23 +10,32 @@
 <article class="main">
 
     <section id="imgresource">
+        <img src="img/tower.png" id="imgTower"  />
 
     </section>
+    <section id="game">
+        <canvas id="map" width="600px" height="600px" style="background:url(img/bg.png) repeat;position:absolute;left:0;top:0;z-index:99;"></canvas>
+        <canvas id="main" width="600" height="600" style="position:absolute;left:0;top:0;z-index:100;"></canvas>
+        <canvas id="tower" width="600" height="600" style="position:absolute;left:0;top:0;z-index:100;"></canvas>
+        <canvas id="select" width="600" height="600" style="position:absolute;left:0;top:0;z-index:101;"></canvas>
+        <canvas id="info" width="100" height="600" style="background-color:#224422;position:absolute;left:600px;top:0;z-index:102;"></canvas>
+    </section>
+
     <script src="js/Config.js"></script>
     <script src="js/Tools.js"></script>
     <script src="js/Map.js"></script>
+    <script src="js/Tower.js"></script>
     <script src="js/Game.js"></script>
 
 
-    <section id="game">
-        <canvas id="map" width="600px" height="600px" style="background:url(img/bg.png) repeat;position:absolute;left:0;top:0;z-index:99;"></canvas>
-
-    </section>
 
 </article>
 <script>
     Lucien.Game.init();
     Lucien.Game.start();
+
+
+    ;
 </script>
 </body>
 </html>

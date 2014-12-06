@@ -3,18 +3,29 @@
  */
 var Lucien=(function(L){
     "use strict";
+
     L.Game={
         //画布列表信息
         canvasList : {},
         currentMap:[],
         initCanvas : function(){
             this.canvasList = {
-                map : document.getElementById(L.Config.canvasIds.map).getContext("2d")
+                map :L.Config.canvasElements.map.getContext("2d"),
+                info:L.Config.canvasElements.info.getContext("2d"),
+                select:L.Config.canvasElements.select.getContext("2d"),
+                main: L.Config.canvasElements.main.getContext("2d"),
+                tower: L.Config.canvasElements.tower.getContext("2d")
+
             }
+        },
+        //初始化数据
+        initData : function(){
+            L.Tower.init(this.canvasList.info, L.Config.imgList.imgTower);
         },
         init : function(){
 
             this.initCanvas();
+            this.initData();
 
         },
         start : function(){

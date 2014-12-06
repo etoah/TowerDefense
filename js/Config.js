@@ -34,15 +34,25 @@ var Lucien=(function(L){
                 [0,0,0,0,0,0,0,0,1,0,0,0]]
 
         ],
-        canvasIds:{
-            map:'map',
-            main : 'main',
-            info :'info',
-            select : 'select',
-            tower : 'tower'
+        canvasElements:{
+            map:document.getElementById('map'),
+            main : document.getElementById('main'),
+            info :document.getElementById('info'),
+            select : document.getElementById('select'),
+            tower : document.getElementById('tower')
 
-        }
-
+        },
+        towerMap : [
+                    {x:0,y:80},{x:100,y:40},{x:100,y:80},
+                    {x:100,y:0},{x:50,y:0},{x:0,y:0},
+                    {x:0,y:40},{x:50,y:40},{x:50,y:80}
+                    ],
+        imgList :{
+                imgEnemy : document.getElementById("imgEnemy"),
+                imgTower : document.getElementById("imgTower"),
+                imgBullet : document.getElementById("imgBullet"),
+                imgBtn : document.getElementById("imgBtn")
+            }
     }
 
 
