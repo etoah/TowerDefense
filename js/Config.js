@@ -4,7 +4,9 @@
 
 var Lucien=(function(L){
     "use strict";
-    L.Config={
+   var Config={
+        FPS:50,
+        mapSideLen:600,
         currentMapIdx:0,
         mapData:[
             [[0,0,0,0,0,0,0,0,0,0,0,0],
@@ -34,6 +36,7 @@ var Lucien=(function(L){
                 [0,0,0,0,0,0,0,0,1,0,0,0]]
 
         ],
+        mapEntry:[{x:50,y:0}],
         canvasElements:{
             map:document.getElementById('map'),
             main : document.getElementById('main'),
@@ -52,9 +55,25 @@ var Lucien=(function(L){
                 imgTower : document.getElementById("imgTower"),
                 imgBullet : document.getElementById("imgBullet"),
                 imgBtn : document.getElementById("imgBtn")
-            }
-    }
+            },
+        enemyMapSideLen:50,
+        enemyMapCount:9,
+        enemyMap:[] //下面函数初始化
 
 
+    };
+
+    //初始化，敌人的坐标
+    Config.enemyMap=(function(){
+        var enemyMap=[];
+        for(var i=0;i< Config.enemyMapCount;i++)
+        {
+            enemyMap.push({x: Config.enemyMapSideLen*i,y:0});
+        }
+        return enemyMap;
+
+    })()
+
+    L.Config=Config;
     return L;
 }(Lucien||{}))

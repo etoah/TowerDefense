@@ -7,6 +7,7 @@ var Lucien=(function(L){
     L. Map = {
         //当前地图
         currentMap: [],
+        mapEntry:null,
 
         //画出地图
         draw : function(map){
