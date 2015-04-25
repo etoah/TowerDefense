@@ -4,7 +4,6 @@
 var Lucien=(function(L){
 
     "use strict";
-
     function Enemy(x,y,type)
     {
         this.x=x;
@@ -35,8 +34,20 @@ var Lucien=(function(L){
 
         over:function(isdead)
         {
-            this.islive = false;
+            //this.islive = false;
+            if(!isdead)
+            {
+                L.Config.life-=1;
+            }
+            else
+            {
+                L.Config.score+= L.Config.coinPerEnemy;
+            }
+            L.Game.updateMessag();
             L.Game.enemyList.remove(this) ;
+            if(L.Config.life<=0) {
+                L.Game.over();
+            }
         },
 
         draw:function(){
@@ -48,7 +59,7 @@ var Lucien=(function(L){
             }
              L.Canvas.drawImg(this.cxt,this.img,L.Config.enemyMap[this.type].x ,mapY,this.height,this.width,this.x,this.y,this.height,this.width);
             //画出血量
-            L.Canvas.fillRect(this.cxt,this.x+5,this.y-2,lifeIcon,3,"rgba(38,223,116,0.8)");
+            L.Canvas.fillRect(this.cxt,this.x+5,this.y,lifeIcon,3,"rgba(38,223,116,0.8)");
 
         },
 

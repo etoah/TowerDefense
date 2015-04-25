@@ -58,8 +58,13 @@ var Lucien=(function(L){
             },
         enemyMapSideLen:50,
         enemyMapCount:9,
-        enemyMap:[] //下面函数初始化
-
+        enemyMap:[], //下面函数初始化
+       //游戏参数
+       score:150,
+       life:10,
+       //关卡数
+       mission : 0,
+       coinPerEnemy:5
 
     };
 
@@ -72,8 +77,8 @@ var Lucien=(function(L){
         }
         return enemyMap;
 
-    })()
+    })();
 
     L.Config=Config;
     return L;
-}(Lucien||{}))
+}(Lucien||{}));

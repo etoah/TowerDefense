@@ -7,8 +7,7 @@ var Lucien=(function(L){
     var Game={
         //画布列表信息
         canvasList : {},
-        //关卡数
-        mission : 0,
+
         //每关的延迟时间
         missionLazy : 2000,
         //每关已出的敌人数
@@ -20,9 +19,8 @@ var Lucien=(function(L){
         //敌人类表
         enemyList : [],
         num:0,
-        //游戏参数
-        score:150,
-        life:10,
+        bulletList:[],
+
         initCanvas : function(){
             this.canvasList = {
                 map :L.Config.canvasElements.map.getContext("2d"),
@@ -41,16 +39,16 @@ var Lucien=(function(L){
 
             this.initCanvas();
             this.initData();
-            Game.writeMessag();
+            Game.updateMessag();
 
         },
 
-        writeMessag:function(){
+        updateMessag:function(){
 
                 L.Canvas.clear(Game.canvasList.info,100,100);
-                L.Canvas.drawText(Game.canvasList.info,"金钱:"+this.score,10,30,"#00AA00");
-                L.Canvas.drawText(Game.canvasList.info,"第"+this.mission+"波",10,60,"#00AA00");
-                L.Canvas.drawText(Game.canvasList.info,"剩余:"+this.life,10,90,"#00AA00");
+                L.Canvas.drawText(Game.canvasList.info,"金钱:"+ L.Config.score,10,30,"#00AA00");
+                L.Canvas.drawText(Game.canvasList.info,"第 "+ L.Config.mission+" 波",10,60,"#00AA00");
+                L.Canvas.drawText(Game.canvasList.info,"生命:"+ L.Config.life,10,90,"#00AA00");
         },
 
         start : function(){
@@ -90,7 +88,7 @@ var Lucien=(function(L){
             }
 
             Game.missionEnemy += 1;
-            var enemy=new L.Enemy(L.Map.mapEntry.x,L.Map.mapEntry.y,this.mission);
+            var enemy=new L.Enemy(L.Map.mapEntry.x,L.Map.mapEntry.y, L.Config.mission);
             //敌人序号  关*20+当前数
             enemy.num = Game.mission*20+Game.missionEnemy;
             //添加到敌人列表
