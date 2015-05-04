@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2014/12/5 0005.
+ * Created by Lucien on 2014/12/5 0005.
  */
 var Lucien=(function(L){
     "use strict";
@@ -85,8 +85,12 @@ var Lucien=(function(L){
             return false;
         }
     }
+
+
+
+
     //扩展查询方法
-    Array.prototype.index = function(obj){
+    Array.prototype.indexOf||(Array.prototype.indexOf = function(obj){
 
         for(var i=0,l=this.length;i<l;i++){
 
@@ -96,7 +100,7 @@ var Lucien=(function(L){
             }
         }
         return -1;
-    }
+    })
    //扩展删除
     Array.prototype.remove = function(obj){
 

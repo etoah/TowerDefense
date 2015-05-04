@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2014/12/5 0005.
+ * Created by Lucien on 2014/12/5 0005.
  */
 var Lucien=(function(L){
     "use strict";
@@ -89,6 +89,7 @@ var Lucien=(function(L){
 
             Game.missionEnemy += 1;
             var enemy=new L.Enemy(L.Map.mapEntry.x,L.Map.mapEntry.y, L.Config.mission);
+
             //敌人序号  关*20+当前数
             enemy.num = Game.mission*20+Game.missionEnemy;
             //添加到敌人列表

@@ -29,8 +29,8 @@ var Lucien=(function(L){
     Enemy.prototype={
         cxt: L.Config.canvasElements.main.getContext("2d"),
         img: L.Config.imgList.imgEnemy,
-        height:L.Config.enemyMapSideLen,
-        width:L.Config.enemyMapSideLen,
+        height:L.Config.enemy.mapSideLen,
+        width:L.Config.enemy.mapSideLen,
 
         over:function(isdead)
         {
@@ -51,13 +51,13 @@ var Lucien=(function(L){
         },
 
         draw:function(){
-            var mapY=L.Config.enemyMap[this.type].y,
+            var mapY=L.Config.enemy.map[this.type].y,
                 lifeIcon=Math.floor((this.width-10)*this.life/this.maxLife);
             if(this.frozenTime > 0)
             {
-                mapY+= L.Config.enemyMapSideLen;
+                mapY+= L.Config.enemy.mapSideLen;
             }
-             L.Canvas.drawImg(this.cxt,this.img,L.Config.enemyMap[this.type].x ,mapY,this.height,this.width,this.x,this.y,this.height,this.width);
+             L.Canvas.drawImg(this.cxt,this.img,L.Config.enemy.map[this.type].x ,mapY,this.height,this.width,this.x,this.y,this.height,this.width);
             //画出血量
             L.Canvas.fillRect(this.cxt,this.x+5,this.y,lifeIcon,3,"rgba(38,223,116,0.8)");
 

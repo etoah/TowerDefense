@@ -15,14 +15,14 @@ article.main
     background-color: azure;
     padding: 10px;
 }
-section#game
+#game
 {
     position:relative;
     margin: 0 auto;
     width:700px;
     height:600px;
 }
-section#imgresource
+#imgResource
 {
     display: none;
 }

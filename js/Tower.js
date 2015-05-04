@@ -3,7 +3,7 @@
  */
 var Lucien=(function(L){
     "use strict";
-    var towerTypeCount= L.Config.towerMap.length;
+    var towerTypeCount= L.Config.tower.Map.length;
     function canInstall(xIndex,yIndex)
     {
         return L.Map.currentMap[xIndex][yIndex]===0&&!Tower.installTower[xIndex+"_"+yIndex];
@@ -37,9 +37,9 @@ var Lucien=(function(L){
             xIndex,yIndex;
         xIndex = Math.floor(x / 50);
         yIndex = Math.floor(y / 50);
-        L.Canvas.clear(cxt,600,600);
+        L.Canvas.clear(cxt, L.Config.mapSideLen, L.Config.mapSideLen);
         //画出塔在左侧区域
-        L.Canvas.drawImg(cxt,Tower.towerImg,L.Config.towerMap[i].x,L.Config.towerMap[i].y,50,40,x-25,y-20,50,50);
+        L.Canvas.drawImg(cxt,Tower.towerImg,L.Config.tower.Map[i].x,L.Config.tower.Map[i].y,L.Config.tower.size.x,L.Config.tower.size.y,x-L.Config.tower.size.x/2,y-L.Config.tower.size.y/2,50,50);
         if(canInstall(xIndex,yIndex))
         {
             L.Canvas.drawRect(cxt,xIndex*50,yIndex*50,50,50,'yellow');
@@ -198,7 +198,7 @@ var Lucien=(function(L){
     Tower.prototype={
         img: L.Config.imgList.imgTower,
         draw : function(){
-            L.Canvas.drawImg(this.cxt,this.img, L.Config.towerMap[this.type].x, L.Config.towerMap[this.type].y,this.width,this.height,this.x,this.y,this.width,this.height);
+            L.Canvas.drawImg(this.cxt,this.img, L.Config.tower.Map[this.type].x, L.Config.tower.Map[this.type].y,this.width,this.height,this.x,this.y,this.width,this.height);
         },
         update : function(enemyList){
             if(this.cd>0){
@@ -217,16 +217,13 @@ var Lucien=(function(L){
     }
     Tower.init=function(cxt,img){
         for(var i = 0;i<towerTypeCount;i++){
-            L.Canvas.drawImg(cxt,img, L.Config.towerMap[i].x,L.Config.towerMap[i].y,50,40,25,100+i*57,50,40);
+            L.Canvas.drawImg(cxt,img, L.Config.tower.Map[i].x,L.Config.tower.Map[i].y,50,40,25,100+i*57,50,40);
             Tower.towerPosition.push({x:25,y:100+i*57,width:50,height:40});
         }
         Tower.towerImg = img;
         Tower.bindClick();
 
     };
-
-
-
 
     Tower.bindClick=function(){
         var info=L.Config.canvasElements.info,
