@@ -59,9 +59,9 @@ var Lucien=(function(L){
        tower:
        {
            Map : [
-               {x:0,y:80},{x:100,y:40},{x:100,y:80},
-               {x:100,y:0},{x:50,y:0},{x:0,y:0},
-               {x:0,y:40},{x:50,y:40},{x:50,y:80}
+               {x:0,y:80,type:'steal'},{x:100,y:40,type:'forzen'},{x:100,y:80,type:'mutiKill'},
+               {x:100,y:0,type:'seckill'},{x:50,y:0,type:'steal'},{x:0,y:0,type:'puncture'},
+               {x:0,y:40,type:'mutiKill'},{x:50,y:40,type:'forzen'},{x:50,y:80,type:'steal'}
            ],
            Size:{x:50,y:40}
        },

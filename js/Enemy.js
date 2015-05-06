@@ -13,7 +13,7 @@ var Lucien=(function(L){
         this.life = this.maxLife;
         this.sp = 2;
         //是否活着
-        this.islive = true;
+        this.isLive = true;
         //移动的方向
         this.dir = null;
         //下个移动位置
@@ -34,7 +34,7 @@ var Lucien=(function(L){
 
         over:function(isdead)
         {
-            //this.islive = false;
+            //this.isLive = false;
             if(!isdead)
             {
                 L.Config.life-=1;
@@ -130,7 +130,32 @@ var Lucien=(function(L){
                     break;
             }
 
+        },
+
+
+        hit:function(hurt,effer)
+        {
+            this.life -= hurt;
+            //选择子弹效果
+            switch(effer.effer){
+
+                case "frozen":
+                    this.frozenTime = effer.num;
+                    break;
+                case "steal":
+                    Info.updateScore(effer.num);
+                    break;
+                case "kill":
+                    if(Math.floor(Math.random()*100+1) <= effer.num)this.life = 0;
+                    break;
+                default:
+                    break;
+            }
+            //判断生命
+            if(this.life <= 0)this.over();
         }
+
+
 
 
 

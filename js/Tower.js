@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2014/12/5 0005.
+ * Created by Lucien on 2014/12/5 0005.
  */
 var Lucien=(function(L){
     "use strict";
@@ -39,7 +39,7 @@ var Lucien=(function(L){
         yIndex = Math.floor(y / 50);
         L.Canvas.clear(cxt, L.Config.mapSideLen, L.Config.mapSideLen);
         //画出塔在左侧区域
-        L.Canvas.drawImg(cxt,Tower.towerImg,L.Config.tower.Map[i].x,L.Config.tower.Map[i].y,L.Config.tower.size.x,L.Config.tower.size.y,x-L.Config.tower.size.x/2,y-L.Config.tower.size.y/2,50,50);
+        L.Canvas.drawImg(cxt,Tower.towerImg,L.Config.tower.Map[i].x,L.Config.tower.Map[i].y,L.Config.tower.Size.x,L.Config.tower.Size.y,x-L.Config.tower.Size.x/2,y-L.Config.tower.Size.y/2,50,50);
         if(canInstall(xIndex,yIndex))
         {
             L.Canvas.drawRect(cxt,xIndex*50,yIndex*50,50,50,'yellow');
@@ -66,7 +66,7 @@ var Lucien=(function(L){
         yIndex = Math.floor(y / 50);
         L.Canvas.clear(cxt,600,600);
         if(canInstall(xIndex,yIndex)) {
-            var tower = new Tower(towerCvs,i, xIndex * 50, yIndex * 50, 50, 40)
+            var tower = new Tower(towerCvs, L.Config.tower.Map[0].type, xIndex * 50, yIndex * 50, 50, 40)
             tower.draw();
             //标记当前位置有塔
             Tower.installTower[xIndex+"_"+yIndex] = i+"";
@@ -94,107 +94,112 @@ var Lucien=(function(L){
     Tower.installTower=[];
     Tower.towerImg=null;
 
-    Tower.towerType = [
-        {
-            level1:{
+    Tower.towerType = {
+        steal:
+        [
+            {
                 scope:100,buyIt:50,bullet:1,cd:20
             },
-            level2:{
+            {
                 scope:110,buyIt:50,bullet:1,cd:18
             },
-            level3:{
+            {
                 scope:120,buyIt:50,bullet:1,cd:15
             }
-        },
-        {
-            level1:{
+        ],
+        forzen:
+        [
+            {
                 scope:120,buyIt:75,bullet:1,cd:18
             },
-            level2:{
+            {
                 scope:130,buyIt:75,bullet:1,cd:15
             },
-            level3:{
+            {
                 scope:140,buyIt:75,bullet:2,cd:12
             }
-        },
-        {
-            level1:{
+        ],
+        mutiKill:
+        [
+            {
                 scope:140,buyIt:100,bullet:3,cd:18
             },
-            level2:{
+            {
                 scope:150,buyIt:100,bullet:4,cd:15
             },
-            level3:{
+            {
                 scope:160,buyIt:100,bullet:5,cd:12
             }
-        },
-        {
-            level1:{
+        ],
+        puncture:
+        [
+            {
                 scope:130,buyIt:125,bullet:1,cd:50
             },
-            level2:{
+            {
                 scope:140,buyIt:125,bullet:1,cd:40
             },
-            level3:{
+            {
                 scope:150,buyIt:125,bullet:1,cd:30
             }
-        },
-        {
-            level1:{
+        ],
+        seckill://秒杀 =.=!中式英语好强大
+        [
+            {
                 scope:150,buyIt:150,bullet:1,cd:20
             },
-            level2:{
+            {
                 scope:160,buyIt:150,bullet:1,cd:15
             },
-            level3:{
+            {
                 scope:170,buyIt:150,bullet:1,cd:12
             }
-        },
-        {
-            level1:{
-                scope:150,buyIt:150,bullet:1,cd:20
-            },
-            level2:{
-                scope:160,buyIt:150,bullet:1,cd:15
-            },
-            level3:{
-                scope:170,buyIt:150,bullet:1,cd:12
-            }
-        },
-        {
-            level1:{
-                scope:180,buyIt:150,bullet:1,cd:20
-            },
-            level2:{
-                scope:190,buyIt:150,bullet:1,cd:15
-            },
-            level3:{
-                scope:200,buyIt:150,bullet:1,cd:12
-            }
-        },
-        {
-            level1:{
-                scope:210,buyIt:150,bullet:1,cd:20
-            },
-            level2:{
-                scope:220,buyIt:150,bullet:1,cd:15
-            },
-            level3:{
-                scope:230,buyIt:150,bullet:1,cd:12
-            }
-        },
-        {
-            level1:{
-                scope:80,buyIt:150,bullet:1,cd:20
-            },
-            level2:{
-                scope:90,buyIt:150,bullet:1,cd:15
-            },
-            level3:{
-                scope:100,buyIt:150,bullet:1,cd:12
-            }
-        }
-    ]
+        ]
+        //{
+        //    level1:{
+        //        scope:150,buyIt:150,bullet:1,cd:20
+        //    },
+        //    level2:{
+        //        scope:160,buyIt:150,bullet:1,cd:15
+        //    },
+        //    level3:{
+        //        scope:170,buyIt:150,bullet:1,cd:12
+        //    }
+        //},
+        //{
+        //    level1:{
+        //        scope:180,buyIt:150,bullet:1,cd:20
+        //    },
+        //    level2:{
+        //        scope:190,buyIt:150,bullet:1,cd:15
+        //    },
+        //    level3:{
+        //        scope:200,buyIt:150,bullet:1,cd:12
+        //    }
+        //},
+        //{
+        //    level1:{
+        //        scope:210,buyIt:150,bullet:1,cd:20
+        //    },
+        //    level2:{
+        //        scope:220,buyIt:150,bullet:1,cd:15
+        //    },
+        //    level3:{
+        //        scope:230,buyIt:150,bullet:1,cd:12
+        //    }
+        //},
+        //{
+        //    level1:{
+        //        scope:80,buyIt:150,bullet:1,cd:20
+        //    },
+        //    level2:{
+        //        scope:90,buyIt:150,bullet:1,cd:15
+        //    },
+        //    level3:{
+        //        scope:100,buyIt:150,bullet:1,cd:12
+        //    }
+        //}
+    }
     Tower.prototype={
         img: L.Config.imgList.imgTower,
         draw : function(){
@@ -206,11 +211,28 @@ var Lucien=(function(L){
                 return false;
             }
 
-            var towerInfo = Tower.towerType[this.type]["level_"+this.level],
+            var towerInfo = Tower.towerType[this.type][this.level],
                 canShot = towerInfo.bullet,
                 enemy;
 
             this.cd = towerInfo.cd;
+
+            //遍历敌人
+            for(var i=0,l=enemyList.length;i<l;i++){
+
+                enemy = enemyList[i];
+
+                if(!enemy)continue;
+                //判断敌人是否在塔的攻击范围内
+                if(L.Canvas.isRectInCircle(enemy,{x:this.x+ L.Config.tower.Size/2,y:this.y+L.Config.tower.Size/2,radius:towerInfo.scope})){
+                    //可发送的子弹数减少
+                    canShot -= 1;
+                    //新增一个子弹,加入到子弹列表中
+                    Game.bulletList.push(new Bullet(this.type,enemy,this.level,this.x+20,this.y+20,5,5));
+                    //如果可用子弹没了,退出
+                    if(canShot <= 0)break;
+                }
+            }
 
 
         }
@@ -234,9 +256,23 @@ var Lucien=(function(L){
         //如果鼠标释放的位置还在左侧,则取消此次操作
         info.onmouseup = function(){
 
-            L.Canvas.clear(L.Game.canvasList.select,500,500);
+            L.Canvas.clear(L.Game.canvasList.select,600,600);
             select.onmousemove = null;
             select.onmousedown = null;
+        }
+    };
+
+    Tower.updateAll=function()
+    {
+        var tower;
+
+        for(var i=0,l= L.Game.towerList.length;i<l;i++){
+
+            tower = L.Game.towerList[i];
+
+            if(!tower)continue;
+
+            tower.update(L.Game.enemyList);
         }
     }
     L.Tower=Tower;
