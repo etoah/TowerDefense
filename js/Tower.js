@@ -32,7 +32,7 @@ var Lucien=(function(L){
         var x = e.offsetX || e.layerX,
             y = e.offsetY || e.layerY,
             cxt = L.Game.canvasList.select,
-            i=this.towerIndex|| 0,
+            i=this.type|| 'steal',
         //地图上的坐标点
             xIndex,yIndex;
         xIndex = Math.floor(x / 50);
@@ -43,7 +43,7 @@ var Lucien=(function(L){
         if(canInstall(xIndex,yIndex))
         {
             L.Canvas.drawRect(cxt,xIndex*50,yIndex*50,50,50,'yellow');
-            L.Canvas.fillArc(cxt,x,y,Tower.towerType[i]['level1'].scope,"rgba(25,70,174,0.4)");
+            L.Canvas.fillArc(cxt,x,y,Tower.towerType[i][0].scope,"rgba(25,70,174,0.4)");
         }
 
 
