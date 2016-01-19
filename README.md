@@ -4,46 +4,8 @@
 
 
 
-#####怎么使用
-`原生JS` 
-
 
 ![预览](review.jpg )
-
-[现在试玩](https://www.baidu.com/)
-
-
-#####优点
-* 原生
-* 牛逼
-* 就是牛逼
-
-
-
-#####
-
-*dasf*
-**dfadfa**
-
-> adfadfadfadf
-
-
-
-
-
-
-
-adfadsfasdf  
-adfadf
-adf
-adf
-a
-
-afadfadf
-
-
-adfadfadf
-
 
 
 ``` javascript
